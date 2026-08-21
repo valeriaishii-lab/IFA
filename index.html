@@ -1,658 +1,385 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projeto Integrador: Cada Gota Conta</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- Chart.js para os gráficos -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+ 
+  <style>
+    :root {
+      --azul-escuro: #0f4c81;
+      --azul-vibrante: #0088ff;
+      --verde-agua: #00d2a0;
+      --verde-lima: #25d366;
+      --fundo: #eef9f6;
+      --texto: #1a303a;
+      --card-bg: #ffffff;
+    }
 
-    <title>Água para o Futuro | Sustentabilidade</title>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+    }
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, Helvetica, sans-serif;
-        }
+    body {
+      background-color: var(--fundo);
+      color: var(--texto);
+      line-height: 1.6;
+    }
 
-        html {
-            scroll-behavior: smooth;
-        }
+    header {
+      background: linear-gradient(135deg, var(--azul-escuro), var(--verde-agua));
+      color: white;
+      text-align: center;
+      padding: 3rem 1rem;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    }
 
-        body {
-            background: #f1f8f6;
-            color: #173b3a;
-            line-height: 1.6;
-        }
+    header h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    }
 
-        /* MENU */
-        header {
-            background: #063b3b;
-            color: white;
-            padding: 18px 8%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
+    header p {
+      font-size: 1.2rem;
+      margin-top: 10px;
+      opacity: 0.9;
+    }
 
-        header h1 {
-            color: #5ee7c5;
-            font-size: 24px;
-        }
+    nav {
+      background: var(--azul-escuro);
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      padding: 10px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
 
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin-left: 20px;
-            transition: 0.3s;
-        }
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 20px;
+      transition: background 0.3s;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
 
-        nav a:hover {
-            color: #5ee7c5;
-        }
+    nav a:hover {
+      background: var(--verde-agua);
+      color: var(--azul-escuro);
+    }
 
-        /* HERO */
-        .hero {
-            min-height: 90vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 40px 10%;
-            background:
-                linear-gradient(rgba(0, 55, 55, 0.82), rgba(0, 80, 75, 0.82)),
-                radial-gradient(circle at center, #39b7a0, #063b3b);
-            color: white;
-        }
+    .container {
+      max-width: 1100px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
 
-        .hero-content {
-            max-width: 850px;
-        }
+    section {
+      background: var(--card-bg);
+      border-radius: 15px;
+      padding: 25px;
+      margin-bottom: 30px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+      border-top: 5px solid var(--verde-agua);
+    }
 
-        .hero h2 {
-            font-size: 52px;
-            margin-bottom: 20px;
-        }
+    h2 {
+      color: var(--azul-escuro);
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      border-bottom: 2px solid var(--fundo);
+      padding-bottom: 10px;
+    }
 
-        .hero h2 span {
-            color: #5ee7c5;
-        }
+    .grid-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
 
-        .hero p {
-            font-size: 20px;
-            margin-bottom: 30px;
-        }
+    .card {
+      background: #f8fdff;
+      border: 1px solid #d0f0eb;
+      border-radius: 12px;
+      padding: 15px;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
 
-        .botao {
-            display: inline-block;
-            padding: 14px 28px;
-            background: #5ee7c5;
-            color: #063b3b;
-            text-decoration: none;
-            border-radius: 30px;
-            font-weight: bold;
-            transition: 0.3s;
-        }
+    .card:hover {
+      transform: translateY(-5px);
+    }
 
-        .botao:hover {
-            transform: scale(1.05);
-            background: white;
-        }
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
 
-        /* SEÇÕES */
-        section {
-            padding: 80px 10%;
-        }
+    .legenda {
+      font-size: 0.85rem;
+      color: #555;
+      margin-top: 8px;
+      font-style: italic;
+    }
 
-        .titulo {
-            text-align: center;
-            margin-bottom: 45px;
-        }
+    .tab-container {
+      margin-top: 15px;
+    }
 
-        .titulo h2 {
-            font-size: 36px;
-            color: #075c59;
-        }
+    .tab-buttons {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
 
-        .titulo p {
-            max-width: 700px;
-            margin: 10px auto;
-            color: #55706e;
-        }
+    .tab-btn {
+      background: var(--fundo);
+      border: 2px solid var(--azul-vibrante);
+      color: var(--azul-escuro);
+      padding: 10px 15px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
 
-        /* CARDS */
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-            gap: 25px;
-        }
+    .tab-btn.active, .tab-btn:hover {
+      background: var(--azul-vibrante);
+      color: white;
+    }
 
-        .card {
-            background: white;
-            padding: 30px;
-            border-radius: 18px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-            transition: 0.3s;
-            border-top: 5px solid #39b7a0;
-        }
+    .tab-content {
+      display: none;
+      background: #f0fdfa;
+      padding: 15px;
+      border-radius: 8px;
+    }
 
-        .card:hover {
-            transform: translateY(-8px);
-        }
+    .tab-content.active {
+      display: block;
+    }
 
-        .card .icone {
-            font-size: 40px;
-            margin-bottom: 15px;
-        }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
 
-        .card h3 {
-            color: #075c59;
-            margin-bottom: 10px;
-        }
+    th, td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #e0e0e0;
+    }
 
-        /* NÚMEROS */
-        .numeros {
-            background: #063b3b;
-            color: white;
-        }
+    th {
+      background-color: var(--azul-escuro);
+      color: white;
+    }
 
-        .numeros .titulo h2 {
-            color: #5ee7c5;
-        }
+    tr:nth-child(even) {
+      background-color: #f4faf8;
+    }
 
-        .estatisticas {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 25px;
-            text-align: center;
-        }
+    .chart-box {
+      max-width: 600px;
+      margin: 20px auto;
+    }
 
-        .estatistica {
-            background: rgba(255,255,255,0.08);
-            padding: 30px 20px;
-            border-radius: 15px;
-        }
+    footer {
+      background: var(--azul-escuro);
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
 
-        .estatistica strong {
-            display: block;
-            font-size: 42px;
-            color: #5ee7c5;
-        }
-
-        .estatistica span {
-            font-size: 15px;
-        }
-
-        /* TRATAMENTO */
-        .etapas {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 20px;
-        }
-
-        .etapa {
-            background: white;
-            padding: 25px;
-            text-align: center;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.07);
-        }
-
-        .numero {
-            width: 45px;
-            height: 45px;
-            background: #39b7a0;
-            color: #063b3b;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 15px;
-            font-weight: bold;
-        }
-
-        /* PROBLEMA E SOLUÇÃO */
-        .problema-solucao {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-        }
-
-        .problema,
-        .solucao {
-            padding: 35px;
-            border-radius: 18px;
-        }
-
-        .problema {
-            background: #ffe8e5;
-            border-left: 6px solid #e05252;
-        }
-
-        .solucao {
-            background: #dff8ef;
-            border-left: 6px solid #25a987;
-        }
-
-        .problema h3,
-        .solucao h3 {
-            margin-bottom: 15px;
-        }
-
-        .problema ul,
-        .solucao ul {
-            padding-left: 20px;
-        }
-
-        li {
-            margin-bottom: 8px;
-        }
-
-        /* CONSCIENTIZAÇÃO */
-        .conscientizacao {
-            text-align: center;
-            background: linear-gradient(135deg, #dff8ef, #e8f9ff);
-        }
-
-        .conscientizacao p {
-            max-width: 800px;
-            margin: auto;
-            font-size: 19px;
-        }
-
-        /* FOOTER */
-        footer {
-            background: #021f20;
-            color: white;
-            text-align: center;
-            padding: 30px;
-        }
-
-        footer span {
-            color: #5ee7c5;
-        }
-
-        /* RESPONSIVO */
-        @media (max-width: 700px) {
-
-            header {
-                flex-direction: column;
-                gap: 15px;
-            }
-
-            nav a {
-                margin: 5px;
-                font-size: 14px;
-            }
-
-            .hero h2 {
-                font-size: 36px;
-            }
-
-            .hero p {
-                font-size: 17px;
-            }
-
-            .problema-solucao {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    footer a {
+      color: var(--verde-agua);
+    }
+  </style>
 </head>
-
 <body>
 
-    <!-- MENU -->
-    <header>
-        <h1>💧 Água para o Futuro</h1>
+  <header>
+    <h1>PROJETO INTEGRADOR: CADA GOTA CONTA</h1>
+    <p>Conscientização, Tratamento e Análise de Dados de Recursos Hídricos</p>
+  </header>
 
-        <nav>
-            <a href="#inicio">Início</a>
-            <a href="#sustentabilidade">Sustentabilidade</a>
-            <a href="#dados">Dados</a>
-            <a href="#tratamento">Tratamento</a>
-            <a href="#solucoes">Soluções</a>
-        </nav>
-    </header>
+  <nav>
+    <a href="#tratamento">Tratamento</a>
+    <a href="#contaminacao">Contaminação</a>
+    <a href="#enfermedades">Doenças</a>
+    <a href="#dados">Análise de Dados</a>
+  </nav>
 
+  <div class="container">
 
-    <!-- INÍCIO -->
-    <section class="hero" id="inicio">
-
-        <div class="hero-content">
-
-            <h2>
-                Água é vida.
-                <span>Preservar é nosso futuro.</span>
-            </h2>
-
-            <p>
-                A sustentabilidade começa quando entendemos que a água
-                é um recurso essencial e limitado.
-            </p>
-
-            <a href="#sustentabilidade" class="botao">
-                Descubra mais
-            </a>
-
-        </div>
-
-    </section>
-
-
-    <!-- SUSTENTABILIDADE -->
-    <section id="sustentabilidade">
-
-        <div class="titulo">
-            <h2>🌱 Sustentabilidade e Consciência</h2>
-
-            <p>
-                Cuidar da água significa cuidar das pessoas, dos animais,
-                das cidades e do planeta.
-            </p>
-        </div>
-
-
-        <div class="cards">
-
-            <div class="card">
-                <div class="icone">💧</div>
-
-                <h3>Uso consciente</h3>
-
-                <p>
-                    Evitar desperdícios durante o banho, ao escovar os dentes,
-                    lavar roupas e limpar a casa ajuda a preservar água.
-                </p>
-            </div>
-
-
-            <div class="card">
-                <div class="icone">🌳</div>
-
-                <h3>Preservação</h3>
-
-                <p>
-                    Proteger rios, nascentes, matas ciliares e áreas verdes
-                    contribui para manter os recursos hídricos.
-                </p>
-            </div>
-
-
-            <div class="card">
-                <div class="icone">♻️</div>
-
-                <h3>Reutilização</h3>
-
-                <p>
-                    A água utilizada em algumas atividades pode ser reaproveitada
-                    quando isso é feito de maneira segura.
-                </p>
-            </div>
-
-
-            <div class="card">
-                <div class="icone">🏙️</div>
-
-                <h3>Cidades sustentáveis</h3>
-
-                <p>
-                    Sistemas eficientes de abastecimento, tratamento de esgoto
-                    e redução de vazamentos tornam as cidades mais sustentáveis.
-                </p>
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- DADOS -->
-    <section class="numeros" id="dados">
-
-        <div class="titulo">
-
-            <h2>📊 A água em números</h2>
-
-            <p>
-                Alguns números ajudam a entender por que a água precisa
-                ser utilizada de maneira responsável.
-            </p>
-
-        </div>
-
-
-        <div class="estatisticas">
-
-            <div class="estatistica">
-                <strong>~71%</strong>
-                <span>da superfície da Terra é coberta por água.</span>
-            </div>
-
-            <div class="estatistica">
-                <strong>~97%</strong>
-                <span>da água do planeta está nos oceanos e é salgada.</span>
-            </div>
-
-            <div class="estatistica">
-                <strong>~3%</strong>
-                <span>é água doce.</span>
-            </div>
-
-            <div class="estatistica">
-                <strong>1%</strong>
-                <span>
-                    aproximadamente dessa água doce está disponível
-                    com relativa facilidade para uso humano.
-                </span>
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- TRATAMENTO -->
+    <!-- SEÇÃO 1: TRATAMENTO DE ÁGUA E ESGOTO -->
     <section id="tratamento">
-
-        <div class="titulo">
-
-            <h2>🚰 Como funciona o tratamento da água?</h2>
-
-            <p>
-                Antes de chegar às nossas casas, a água captada de rios,
-                represas ou outras fontes pode passar por diversas etapas
-                para remover impurezas e torná-la adequada ao abastecimento.
-            </p>
-
+      <h2>Tratamento de Água e Esgoto</h2>
+      <p>O saneamento básico é fundamental para garantir a integridade da saúde pública e a conservação do meio ambiente. O processo envolve etapas físicas, químicas e biológicas rigorosas.</p>
+     
+      <div class="grid-cards">
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1541888946425-d0fbb186a5b3?auto=format&fit=crop&w=600&q=80" alt="Estação de tratamento de água">
+          <p class="legenda">Estação de Tratamento de Água (ETA) utilizando tanques de decantação e filtragem antes da distribuição.</p>
         </div>
-
-
-        <div class="etapas">
-
-            <div class="etapa">
-                <div class="numero">1</div>
-
-                <h3>Captação</h3>
-
-                <p>
-                    A água é retirada de uma fonte, como um rio,
-                    represa ou manancial.
-                </p>
-            </div>
-
-
-            <div class="etapa">
-                <div class="numero">2</div>
-
-                <h3>Coagulação</h3>
-
-                <p>
-                    Produtos específicos ajudam a agrupar pequenas
-                    partículas presentes na água.
-                </p>
-            </div>
-
-
-            <div class="etapa">
-                <div class="numero">3</div>
-
-                <h3>Floculação</h3>
-
-                <p>
-                    As partículas agrupadas formam flocos maiores,
-                    facilitando sua remoção.
-                </p>
-            </div>
-
-
-            <div class="etapa">
-                <div class="numero">4</div>
-
-                <h3>Decantação</h3>
-
-                <p>
-                    Os flocos mais pesados se depositam no fundo
-                    dos tanques.
-                </p>
-            </div>
-
-
-            <div class="etapa">
-                <div class="numero">5</div>
-
-                <h3>Filtração</h3>
-
-                <p>
-                    A água passa por filtros que retêm partículas
-                    que ainda permaneceram.
-                </p>
-            </div>
-
-
-            <div class="etapa">
-                <div class="numero">6</div>
-
-                <h3>Desinfecção</h3>
-
-                <p>
-                    É realizada uma etapa de desinfecção para
-                    controlar microrganismos que podem causar doenças.
-                </p>
-            </div>
-
-
-            <div class="etapa">
-                <div class="numero">7</div>
-
-                <h3>Distribuição</h3>
-
-                <p>
-                    Depois do tratamento e do controle de qualidade,
-                    a água é encaminhada para o sistema de abastecimento.
-                </p>
-            </div>
-
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?auto=format&fit=crop&w=600&q=80" alt="Tratamento de esgoto">
+          <p class="legenda">Tanque de aeração em uma Estação de Tratamento de Esgoto (ETE) para degradação de matéria orgânica por bactérias.</p>
         </div>
-
+      </div>
     </section>
 
-
-    <!-- PROBLEMAS E SOLUÇÕES -->
-    <section id="solucoes">
-
-        <div class="titulo">
-
-            <h2>⚠️ Problemas e 💡 soluções</h2>
-
-            <p>
-                A crise hídrica possui várias causas. Por isso,
-                também precisamos de várias soluções.
-            </p>
-
+    <!-- SEÇÃO 2: CONTAMINAÇÃO -->
+    <section id="contaminacao">
+      <h2>Contaminação das Águas</h2>
+      <p>A contaminação hídrica ocorre pelo descarte inadequado de efluentes industriais, lixo doméstico, agrotóxicos e esgoto não tratado nos corpos d'água.</p>
+     
+      <div class="tab-container">
+        <div class="tab-buttons">
+          <button class="tab-btn active" onclick="openTab(event, 'domestico')">Esgoto Doméstico</button>
+          <button class="tab-btn" onclick="openTab(event, 'industrial')">Resíduos Industriais</button>
+          <button class="tab-btn" onclick="openTab(event, 'agricola')">Efluentes Agrícolas</button>
         </div>
 
-
-        <div class="problema-solucao">
-
-            <div class="problema">
-
-                <h3>⚠️ Principais problemas</h3>
-
-                <ul>
-                    <li>Desperdício de água.</li>
-                    <li>Poluição de rios e lagos.</li>
-                    <li>Desmatamento de áreas próximas a nascentes.</li>
-                    <li>Falta de saneamento básico.</li>
-                    <li>Vazamentos nas redes de abastecimento.</li>
-                    <li>Uso excessivo de água na agricultura e indústria.</li>
-                    <li>Períodos de seca e eventos climáticos extremos.</li>
-                </ul>
-
-            </div>
-
-
-            <div class="solucao">
-
-                <h3>💡 O que podemos fazer?</h3>
-
-                <ul>
-                    <li>Reduzir o desperdício dentro de casa.</li>
-                    <li>Consertar vazamentos.</li>
-                    <li>Proteger rios, nascentes e matas.</li>
-                    <li>Investir em saneamento básico.</li>
-                    <li>Tratar corretamente o esgoto.</li>
-                    <li>Utilizar tecnologias que economizem água.</li>
-                    <li>Promover educação e consciência ambiental.</li>
-                </ul>
-
-            </div>
-
+        <div id="domestico" class="tab-content active">
+          <h3>Contaminação por Esgoto Doméstico</h3>
+          <p>O descarte direto de matéria orgânica provoca a eutanásia de rios (eutrofização), promovendo a proliferação excessiva de algas e a redução do oxigênio dissolvido.</p>
         </div>
-
+        <div id="industrial" class="tab-content">
+          <h3>Contaminação Industrial</h3>
+          <p>Metais pesados como mercúrio, chumbo e produtos químicos tóxicos bioacumulam na cadeia alimentar, gerando severos danos ambientais e à saúde humana.</p>
+        </div>
+        <div id="agricola" class="tab-content">
+          <h3>Poluição Agrícola</h3>
+          <p>O uso desmedido de fertilizantes e pesticidas infiltra no lençol freático e atinge mananciais, contaminando a água potável com nitratos.</p>
+        </div>
+      </div>
     </section>
 
-
-    <!-- CONSCIENTIZAÇÃO -->
-    <section class="conscientizacao">
-
-        <div class="titulo">
-
-            <h2>🌎 A mudança começa com a consciência</h2>
-
-        </div>
-
-        <p>
-            Preservar a água não é responsabilidade apenas de governos
-            ou empresas. Cada pessoa pode contribuir com pequenas atitudes.
-            Quando milhões de pessoas economizam, reutilizam e protegem
-            os recursos naturais, o impacto coletivo pode ser enorme.
-        </p>
-
-        <br><br>
-
-        <a href="#inicio" class="botao">
-            Voltar ao início
-        </a>
-
+    <!-- SEÇÃO 3: DOENÇAS DA ÁGUA CONTAMINADA -->
+    <section id="enfermedades">
+      <h2>Doenças Transmitidas por Água Contaminada</h2>
+      <p>A falta de saneamento adequado está diretamente ligada à propagação de patógenos hídricos. Veja abaixo os principais vetores e enfermidades associadas:</p>
+     
+      <table>
+        <thead>
+          <tr>
+            <th>Doença</th>
+            <th>Agente Etiológico</th>
+            <th>Sintomas Principais</th>
+            <th>Prevenção</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Cólera</td>
+            <td>Bactéria (<em>Vibrio cholerae</em>)</td>
+            <td>Diarreia aquosa grave, desidratação rápida</td>
+            <td>Água potável e saneamento básico</td>
+          </tr>
+          <tr>
+            <td>Hepatite A</td>
+            <td>Vírus (HAV)</td>
+            <td>Icterícia, fadiga, náuseas</td>
+            <td>Vacinação e higiene dos alimentos</td>
+          </tr>
+          <tr>
+            <td>Leptospirose</td>
+            <td>Bactéria (<em>Leptospira</em>)</td>
+            <td>Febre alta, dores musculares, icterícia</td>
+            <td>Evitar contato com água de enchente</td>
+          </tr>
+          <tr>
+            <td>Amebíase</td>
+            <td>Protozoário (<em>Entamoeba histolytica</em>)</td>
+            <td>Cólica abdominal, diarreia com sangue</td>
+            <td>Filtração/fervura da água</td>
+          </tr>
+        </tbody>
+      </table>
     </section>
 
+    <!-- SEÇÃO 4: ANÁLISE DE DADOS -->
+    <section id="dados">
+      <h2>Análise de Dados de Saneamento</h2>
+      <p>Abaixo apresentamos dados representativos baseados em indicadores globais e nacionais de acesso a saneamento e tratamento de efluentes.</p>
+     
+      <div class="chart-box">
+        <canvas id="meuGrafico"></canvas>
+      </div>
+    </section>
 
-    <!-- RODAPÉ -->
-    <footer>
+  </div>
 
-        <p>
-            💧 <span>Água para o Futuro</span> — Sustentabilidade,
-            consciência e ação.
-        </p>
+  <footer>
+    <p>Projeto Integrador: Cada Gota Conta &copy; 2026</p>
+    <p>Fontes de pesquisa: <a href="https://www.who.int" target="_blank">OMS</a> | <a href="https://www.unicef.org" target="_blank">UNICEF</a> | <a href="https://www.snis.gov.br" target="_blank">SNIS / Ministério das Cidades</a></p>
+  </footer>
 
-        <p>
-            Projeto educacional sobre preservação e tratamento da água.
-        </p>
+  <script>
+    // Lógica para as abas interativas
+    function openTab(evt, tabName) {
+      let tabContents = document.getElementsByClassName("tab-content");
+      for (let i = 0; i < tabContents.length; i++) {
+        tabContents[i].classList.remove("active");
+      }
+      let tabButtons = document.getElementsByClassName("tab-btn");
+      for (let i = 0; i < tabButtons.length; i++) {
+        tabButtons[i].classList.remove("active");
+      }
+      document.getElementById(tabName).classList.add("active");
+      evt.currentTarget.classList.add("active");
+    }
 
-    </footer>
-
+    // Configuração do Gráfico Chart.js
+    const ctx = document.getElementById('meuGrafico').getContext('2d');
+    const meuGrafico = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Água Encanada', 'Coleta de Esgoto', 'Esgoto Tratado'],
+        datasets: [{
+          label: 'Acesso da População (%)',
+          data: [84.2, 55.8, 51.2],
+          backgroundColor: [
+            '#0088ff',
+            '#00d2a0',
+            '#25d366'
+          ],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          title: {
+            display: true,
+            text: 'Indicadores Estimados de Saneamento Básico (%)'
+          }
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            max: 100
+          }
+        }
+      }
+    });
+  </script>
 </body>
 </html>
