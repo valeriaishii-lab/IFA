@@ -1,1008 +1,658 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta name="description"
-    content="Projeto Cada Gota Conta — tratamento da água e esgoto, contaminação, doenças, sustentabilidade e análise de dados.">
+    <title>Água para o Futuro | Sustentabilidade</title>
 
-  <title>Cada Gota Conta | Tecnociência</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        html {
+            scroll-behavior: smooth;
+        }
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+        body {
+            background: #f1f8f6;
+            color: #173b3a;
+            line-height: 1.6;
+        }
 
-  <link rel="stylesheet" href="style.css">
+        /* MENU */
+        header {
+            background: #063b3b;
+            color: white;
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header h1 {
+            color: #5ee7c5;
+            font-size: 24px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #5ee7c5;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px 10%;
+            background:
+                linear-gradient(rgba(0, 55, 55, 0.82), rgba(0, 80, 75, 0.82)),
+                radial-gradient(circle at center, #39b7a0, #063b3b);
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 850px;
+        }
+
+        .hero h2 {
+            font-size: 52px;
+            margin-bottom: 20px;
+        }
+
+        .hero h2 span {
+            color: #5ee7c5;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+
+        .botao {
+            display: inline-block;
+            padding: 14px 28px;
+            background: #5ee7c5;
+            color: #063b3b;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .botao:hover {
+            transform: scale(1.05);
+            background: white;
+        }
+
+        /* SEÇÕES */
+        section {
+            padding: 80px 10%;
+        }
+
+        .titulo {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .titulo h2 {
+            font-size: 36px;
+            color: #075c59;
+        }
+
+        .titulo p {
+            max-width: 700px;
+            margin: 10px auto;
+            color: #55706e;
+        }
+
+        /* CARDS */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 18px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            transition: 0.3s;
+            border-top: 5px solid #39b7a0;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+        }
+
+        .card .icone {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            color: #075c59;
+            margin-bottom: 10px;
+        }
+
+        /* NÚMEROS */
+        .numeros {
+            background: #063b3b;
+            color: white;
+        }
+
+        .numeros .titulo h2 {
+            color: #5ee7c5;
+        }
+
+        .estatisticas {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            text-align: center;
+        }
+
+        .estatistica {
+            background: rgba(255,255,255,0.08);
+            padding: 30px 20px;
+            border-radius: 15px;
+        }
+
+        .estatistica strong {
+            display: block;
+            font-size: 42px;
+            color: #5ee7c5;
+        }
+
+        .estatistica span {
+            font-size: 15px;
+        }
+
+        /* TRATAMENTO */
+        .etapas {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+        }
+
+        .etapa {
+            background: white;
+            padding: 25px;
+            text-align: center;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.07);
+        }
+
+        .numero {
+            width: 45px;
+            height: 45px;
+            background: #39b7a0;
+            color: #063b3b;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-weight: bold;
+        }
+
+        /* PROBLEMA E SOLUÇÃO */
+        .problema-solucao {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .problema,
+        .solucao {
+            padding: 35px;
+            border-radius: 18px;
+        }
+
+        .problema {
+            background: #ffe8e5;
+            border-left: 6px solid #e05252;
+        }
+
+        .solucao {
+            background: #dff8ef;
+            border-left: 6px solid #25a987;
+        }
+
+        .problema h3,
+        .solucao h3 {
+            margin-bottom: 15px;
+        }
+
+        .problema ul,
+        .solucao ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        /* CONSCIENTIZAÇÃO */
+        .conscientizacao {
+            text-align: center;
+            background: linear-gradient(135deg, #dff8ef, #e8f9ff);
+        }
+
+        .conscientizacao p {
+            max-width: 800px;
+            margin: auto;
+            font-size: 19px;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #021f20;
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+
+        footer span {
+            color: #5ee7c5;
+        }
+
+        /* RESPONSIVO */
+        @media (max-width: 700px) {
+
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav a {
+                margin: 5px;
+                font-size: 14px;
+            }
+
+            .hero h2 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 17px;
+            }
+
+            .problema-solucao {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-<header class="topbar">
+    <!-- MENU -->
+    <header>
+        <h1>💧 Água para o Futuro</h1>
 
-  <a class="brand" href="#inicio">
-    <span class="drop">💧</span>
-    <span>Cada Gota Conta</span>
-  </a>
+        <nav>
+            <a href="#inicio">Início</a>
+            <a href="#sustentabilidade">Sustentabilidade</a>
+            <a href="#dados">Dados</a>
+            <a href="#tratamento">Tratamento</a>
+            <a href="#solucoes">Soluções</a>
+        </nav>
+    </header>
 
-  <button class="menu-btn" id="menuBtn">
-    ☰
-  </button>
 
-  <nav id="nav">
-    <a href="#quimica">Química</a>
-    <a href="#biologia">Biologia</a>
-    <a href="#sustentabilidade">Sustentabilidade</a>
-    <a href="#dados">Dados</a>
-    <a href="#fontes">Fontes</a>
-  </nav>
+    <!-- INÍCIO -->
+    <section class="hero" id="inicio">
 
-</header>
+        <div class="hero-content">
 
+            <h2>
+                Água é vida.
+                <span>Preservar é nosso futuro.</span>
+            </h2>
 
-<main>
+            <p>
+                A sustentabilidade começa quando entendemos que a água
+                é um recurso essencial e limitado.
+            </p>
 
-<!-- HERO -->
+            <a href="#sustentabilidade" class="botao">
+                Descubra mais
+            </a>
 
-<section id="inicio" class="hero">
+        </div>
 
-  <div class="hero-content">
+    </section>
 
-    <span class="eyebrow">
-      PROJETO INTEGRADOR • TECNOCIÊNCIA
-    </span>
 
-    <h1>
-      Água limpa é
-      <span>saúde, ciência e futuro.</span>
-    </h1>
+    <!-- SUSTENTABILIDADE -->
+    <section id="sustentabilidade">
 
-    <p>
-      Um mergulho interativo no tratamento da água e do esgoto,
-      na contaminação hídrica, nas doenças relacionadas e no papel
-      da sustentabilidade.
-    </p>
+        <div class="titulo">
+            <h2>🌱 Sustentabilidade e Consciência</h2>
 
-    <div class="hero-actions">
+            <p>
+                Cuidar da água significa cuidar das pessoas, dos animais,
+                das cidades e do planeta.
+            </p>
+        </div>
 
-      <a class="btn primary" href="#quimica">
-        Explorar o projeto ↓
-      </a>
 
-      <a class="btn ghost" href="#dados">
-        Ver dados
-      </a>
+        <div class="cards">
 
-    </div>
+            <div class="card">
+                <div class="icone">💧</div>
 
-  </div>
+                <h3>Uso consciente</h3>
 
+                <p>
+                    Evitar desperdícios durante o banho, ao escovar os dentes,
+                    lavar roupas e limpar a casa ajuda a preservar água.
+                </p>
+            </div>
 
-  <div class="hero-orbit">
 
-    <div class="orbit orbit1"></div>
-    <div class="orbit orbit2"></div>
+            <div class="card">
+                <div class="icone">🌳</div>
 
-    <div class="water-core">
-      H₂O
-    </div>
+                <h3>Preservação</h3>
 
-    <span class="bubble b1">💧</span>
-    <span class="bubble b2">⚗️</span>
-    <span class="bubble b3">🦠</span>
+                <p>
+                    Proteger rios, nascentes, matas ciliares e áreas verdes
+                    contribui para manter os recursos hídricos.
+                </p>
+            </div>
 
-  </div>
 
-</section>
+            <div class="card">
+                <div class="icone">♻️</div>
 
+                <h3>Reutilização</h3>
 
-<!-- INTRODUÇÃO -->
+                <p>
+                    A água utilizada em algumas atividades pode ser reaproveitada
+                    quando isso é feito de maneira segura.
+                </p>
+            </div>
 
-<section class="intro section">
 
-  <div class="section-heading">
+            <div class="card">
+                <div class="icone">🏙️</div>
 
-    <span class="eyebrow">
-      POR QUE ISSO IMPORTA?
-    </span>
+                <h3>Cidades sustentáveis</h3>
 
-    <h2>
-      Água não é só um recurso.
-      É uma questão de <span>vida.</span>
-    </h2>
+                <p>
+                    Sistemas eficientes de abastecimento, tratamento de esgoto
+                    e redução de vazamentos tornam as cidades mais sustentáveis.
+                </p>
+            </div>
 
-  </div>
+        </div>
 
+    </section>
 
-  <div class="intro-grid">
 
-    <article class="info-card">
+    <!-- DADOS -->
+    <section class="numeros" id="dados">
 
-      <div class="icon">🌎</div>
+        <div class="titulo">
 
-      <h3>
-        Um recurso essencial
-      </h3>
+            <h2>📊 A água em números</h2>
 
-      <p>
-        Água segura é indispensável para beber,
-        produzir alimentos, manter ecossistemas
-        e prevenir doenças.
-      </p>
-
-    </article>
-
-
-    <article class="info-card">
-
-      <div class="icon">🧪</div>
-
-      <h3>
-        Ciência no tratamento
-      </h3>
-
-      <p>
-        Processos físicos, químicos e biológicos
-        transformam água bruta e esgoto em recursos
-        mais seguros para a sociedade e o ambiente.
-      </p>
-
-    </article>
-
-
-    <article class="info-card">
-
-      <div class="icon">❤️</div>
-
-      <h3>
-        Saúde pública
-      </h3>
-
-      <p>
-        Contaminação e saneamento inadequado podem
-        favorecer a transmissão de doenças de
-        transmissão hídrica e alimentar.
-      </p>
-
-    </article>
-
-  </div>
-
-</section>
-
-
-<!-- QUÍMICA -->
-
-<section id="quimica" class="section dark-section">
-
-  <div class="section-heading">
-
-    <span class="eyebrow">
-      TECNOCIÊNCIA • QUÍMICA
-    </span>
-
-    <h2>
-      Como a água e o esgoto são tratados?
-    </h2>
-
-    <p>
-      O tratamento combina diferentes etapas.
-      Clique em cada uma para entender sua função.
-    </p>
-
-  </div>
-
-
-  <div class="tab-buttons">
-
-    <button class="tab active" data-tab="eta">
-      ETA • Água para consumo
-    </button>
-
-    <button class="tab" data-tab="ete">
-      ETE • Tratamento de esgoto
-    </button>
-
-  </div>
-
-
-  <!-- ETA -->
-
-  <div class="process-panel active" id="eta">
-
-    <div class="process-track">
-
-      <button class="step active" data-step="eta1">
-        <span>01</span>
-        <b>Coagulação</b>
-      </button>
-
-      <button class="step" data-step="eta2">
-        <span>02</span>
-        <b>Floculação</b>
-      </button>
-
-      <button class="step" data-step="eta3">
-        <span>03</span>
-        <b>Decantação</b>
-      </button>
-
-      <button class="step" data-step="eta4">
-        <span>04</span>
-        <b>Filtração</b>
-      </button>
-
-      <button class="step" data-step="eta5">
-        <span>05</span>
-        <b>Desinfecção</b>
-      </button>
-
-    </div>
-
-
-    <div class="step-detail" id="eta-detail">
-
-      <span class="detail-tag">
-        ETAPA 01
-      </span>
-
-      <h3>
-        Coagulação
-      </h3>
-
-      <p>
-        Produtos coagulantes ajudam a desestabilizar
-        partículas muito pequenas presentes na água,
-        facilitando sua união nas etapas seguintes.
-      </p>
-
-      <div class="science-note">
-
-        <strong>Química:</strong>
-        ocorre uma alteração das condições das partículas
-        para favorecer a formação de flocos.
-
-      </div>
-
-    </div>
-
-  </div>
-
-
-  <!-- ETE -->
-
-  <div class="process-panel" id="ete">
-
-    <div class="process-track">
-
-      <button class="step active" data-step="ete1">
-
-        <span>01</span>
-        <b>Primário</b>
-
-      </button>
-
-
-      <button class="step" data-step="ete2">
-
-        <span>02</span>
-        <b>Secundário</b>
-
-      </button>
-
-
-      <button class="step" data-step="ete3">
-
-        <span>03</span>
-        <b>Terciário</b>
-
-      </button>
-
-    </div>
-
-
-    <div class="step-detail" id="ete-detail">
-
-      <span class="detail-tag">
-        ETAPA 01
-      </span>
-
-      <h3>
-        Sistema primário
-      </h3>
-
-      <p>
-        O esgoto fica em repouso para que sólidos
-        mais densos se depositem, formando o lodo primário.
-        O lodo pode seguir para adensamento,
-        centrifugação ou leitos de secagem.
-      </p>
-
-      <div class="science-note">
-
-        <strong>Processo:</strong>
-        sedimentação — separação baseada principalmente
-        na diferença de densidade.
-
-      </div>
-
-    </div>
-
-  </div>
-
-
-  <div class="chem-callout">
-
-    <span>⚗️</span>
-
-    <div>
-
-      <strong>
-        Palatabilidade também importa.
-      </strong>
-
-      Além da segurança microbiológica e química,
-      a água para consumo deve apresentar características
-      adequadas de sabor, odor e aparência.
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- BIOLOGIA -->
-
-<section id="biologia" class="section">
-
-  <div class="section-heading">
-
-    <span class="eyebrow">
-      BIOLOGIA
-    </span>
-
-    <h2>
-      Quando a água fica contaminada
-    </h2>
-
-    <p>
-      Poluentes podem chegar à água de formas diferentes —
-      e seus efeitos podem atingir pessoas e ecossistemas.
-    </p>
-
-  </div>
-
-
-  <div class="contamination-map">
-
-
-    <div class="source-card">
-
-      <span>🏠</span>
-
-      <h3>
-        Esgoto doméstico
-      </h3>
-
-      <p>
-        Matéria orgânica e microrganismos podem contaminar
-        rios quando o esgoto não recebe tratamento adequado.
-      </p>
-
-    </div>
-
-
-    <div class="source-card">
-
-      <span>🌾</span>
-
-      <h3>
-        Agricultura
-      </h3>
-
-      <p>
-        Fertilizantes e agrotóxicos podem ser transportados
-        pela chuva para o solo, rios e aquíferos.
-      </p>
-
-    </div>
-
-
-    <div class="source-card">
-
-      <span>🏭</span>
-
-      <h3>
-        Indústria
-      </h3>
-
-      <p>
-        Produtos químicos e outros resíduos podem atingir
-        cursos d’água quando não são corretamente controlados.
-      </p>
-
-    </div>
-
-
-    <div class="source-card">
-
-      <span>⛏️</span>
-
-      <h3>
-        Mineração
-      </h3>
-
-      <p>
-        Atividades mineradoras podem contribuir para a entrada
-        de sedimentos e determinados contaminantes no ambiente.
-      </p>
-
-    </div>
-
-
-    <div class="source-card">
-
-      <span>🛢️</span>
-
-      <h3>
-        Combustíveis e petróleo
-      </h3>
-
-      <p>
-        Vazamentos podem introduzir substâncias que prejudicam
-        organismos aquáticos e a qualidade da água.
-      </p>
-
-    </div>
-
-
-    <div class="source-card">
-
-      <span>🗑️</span>
-
-      <h3>
-        Resíduos e lixo
-      </h3>
-
-      <p>
-        Resíduos descartados de forma irregular podem ser
-        carregados pela chuva para bueiros e corpos d’água.
-      </p>
-
-    </div>
-
-  </div>
-
-
-  <!-- DTHA -->
-
-  <div class="dtha">
-
-    <div>
-
-      <span class="eyebrow">
-        FOCO EM SAÚDE
-      </span>
-
-      <h2>
-        DTHA
-      </h2>
-
-      <p>
-
-        <strong>
-          Doenças de Transmissão Hídrica e Alimentar
-        </strong>
-
-        podem ocorrer pela ingestão de água ou alimentos
-        contaminados. Os agentes podem incluir bactérias,
-        vírus, parasitas ou substâncias químicas.
-
-      </p>
-
-      <p class="small">
-
-        Os sintomas variam conforme o agente,
-        mas podem incluir náusea, vômito, dor abdominal,
-        diarreia, febre e falta de apetite.
-
-      </p>
-
-    </div>
-
-
-    <div class="disease-grid">
-
-      <button class="disease" data-disease="Cólera">
-
-        🦠
-
-        <b>
-          Cólera
-        </b>
-
-        <small>
-          Vibrio cholerae
-        </small>
-
-      </button>
-
-
-      <button class="disease" data-disease="Hepatite A">
-
-        🧬
-
-        <b>
-          Hepatite A
-        </b>
-
-        <small>
-          Vírus da hepatite A
-        </small>
-
-      </button>
-
-
-      <button class="disease" data-disease="Giardíase">
-
-        🔬
-
-        <b>
-          Giardíase
-        </b>
-
-        <small>
-          Giardia
-        </small>
-
-      </button>
-
-
-      <button class="disease" data-disease="Leptospirose">
-
-        🧫
-
-        <b>
-          Leptospirose
-        </b>
-
-        <small>
-          Leptospira
-        </small>
-
-      </button>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- SUSTENTABILIDADE -->
-
-<section id="sustentabilidade" class="section sustainability">
-
-  <div class="section-heading">
-
-    <span class="eyebrow">
-      SUSTENTABILIDADE
-    </span>
-
-    <h2>
-      O ciclo da água precisa continuar.
-    </h2>
-
-    <p>
-      Preservar a água envolve infraestrutura,
-      políticas públicas e atitudes no dia a dia.
-    </p>
-
-  </div>
-
-
-  <div class="sustain-grid">
-
-    <article>
-
-      <span>♻️</span>
-
-      <h3>
-        Destine resíduos corretamente
-      </h3>
-
-      <p>
-        Evite que lixo e óleo de cozinha cheguem
-        a bueiros, rios e solos.
-      </p>
-
-    </article>
-
-
-    <article>
-
-      <span>🚰</span>
-
-      <h3>
-        Cuide da água em casa
-      </h3>
-
-      <p>
-        Faça a manutenção adequada de caixas-d’água
-        e filtros e evite desperdícios.
-      </p>
-
-    </article>
-
-
-    <article>
-
-      <span>🌱</span>
-
-      <h3>
-        Reduza a poluição
-      </h3>
-
-      <p>
-        Prefira práticas e produtos que diminuam
-        a carga de substâncias poluentes no ambiente.
-      </p>
-
-    </article>
-
-
-    <article>
-
-      <span>🏙️</span>
-
-      <h3>
-        Invista em saneamento
-      </h3>
-
-      <p>
-        Coleta e tratamento de esgoto são fundamentais
-        para proteger a saúde e os corpos d’água.
-      </p>
-
-    </article>
-
-  </div>
-
-
-  <!-- QUIZ -->
-
-  <div class="mini-game">
-
-    <div>
-
-      <span class="eyebrow">
-        DESAFIO RÁPIDO
-      </span>
-
-      <h3>
-        Qual atitude protege mais diretamente os rios?
-      </h3>
-
-    </div>
-
-
-    <div class="quiz-options">
-
-      <button data-correct="false">
-        Jogar óleo na pia
-      </button>
-
-      <button data-correct="true">
-        Destinar óleo e resíduos corretamente
-      </button>
-
-      <button data-correct="false">
-        Lançar produtos químicos no vaso
-      </button>
-
-    </div>
-
-
-    <p id="quizResult"></p>
-
-  </div>
-
-</section>
-
-
-<!-- DADOS -->
-
-<section id="dados" class="section data-section">
-
-  <div class="section-heading">
-
-    <span class="eyebrow">
-      MATEMÁTICA • ANÁLISE DE DADOS
-    </span>
-
-    <h2>
-      Números que ajudam a enxergar o problema
-    </h2>
-
-    <p>
-      Os gráficos abaixo usam dados globais publicados pela
-      OMS/UNICEF e servem para visualizar a dimensão do desafio.
-    </p>
-
-  </div>
-
-
-  <div class="stat-grid">
-
-
-    <div class="stat">
-
-      <strong>
-        2,1 bi
-      </strong>
-
-      <span>
-        pessoas sem água potável gerenciada com segurança,
-        segundo a atualização da OMS de 2026.
-      </span>
-
-    </div>
-
-
-    <div class="stat">
-
-      <strong>
-        3,4 bi
-      </strong>
-
-      <span>
-        pessoas sem saneamento gerenciado com segurança.
-      </span>
-
-    </div>
-
-
-    <div class="stat">
-
-      <strong>
-        1,4 mi+
-      </strong>
-
-      <span>
-        mortes evitáveis por ano relacionadas a água,
-        saneamento e higiene inadequados.
-      </span>
-
-    </div>
-
-  </div>
-
-
-  <div class="charts">
-
-
-    <article class="chart-card">
-
-      <h3>
-        Acesso global a água potável
-        gerenciada com segurança
-      </h3>
-
-      <div class="bar-chart">
-
-
-        <div class="bar-row">
-
-          <span>
-            2022
-          </span>
-
-          <div class="bar">
-            <i style="width:73%"></i>
-          </div>
-
-          <b>
-            73%
-          </b>
+            <p>
+                Alguns números ajudam a entender por que a água precisa
+                ser utilizada de maneira responsável.
+            </p>
 
         </div>
 
 
-        <div class="bar-row">
+        <div class="estatisticas">
 
-          <span>
-            2024*
-          </span>
+            <div class="estatistica">
+                <strong>~71%</strong>
+                <span>da superfície da Terra é coberta por água.</span>
+            </div>
 
-          <div class="bar">
-            <i style="width:74%"></i>
-          </div>
+            <div class="estatistica">
+                <strong>~97%</strong>
+                <span>da água do planeta está nos oceanos e é salgada.</span>
+            </div>
 
-          <b>
-            ≈74%
-          </b>
+            <div class="estatistica">
+                <strong>~3%</strong>
+                <span>é água doce.</span>
+            </div>
 
-        </div>
-
-      </div>
-
-      <small>
-        *Valor aproximado usado apenas como visualização.
-        Consulte o relatório JMP para a série completa.
-      </small>
-
-    </article>
-
-
-    <article class="chart-card">
-
-      <h3>
-        Em 2022, pessoas sem serviço
-        gerenciado com segurança
-      </h3>
-
-
-      <div class="donut-wrap">
-
-        <div class="donut">
-
-          <span>
-            2,2 bi
-          </span>
+            <div class="estatistica">
+                <strong>1%</strong>
+                <span>
+                    aproximadamente dessa água doce está disponível
+                    com relativa facilidade para uso humano.
+                </span>
+            </div>
 
         </div>
 
+    </section>
 
-        <div class="legend">
 
-          <p>
-            <i class="dot"></i>
-            Sem serviço gerenciado com segurança
-          </p>
+    <!-- TRATAMENTO -->
+    <section id="tratamento">
 
-          <p>
-            <i class="dot second"></i>
-            Com serviço gerenciado com segurança
-          </p>
+        <div class="titulo">
 
-          <strong>
-            ≈27% × 73%
-          </strong>
+            <h2>🚰 Como funciona o tratamento da água?</h2>
+
+            <p>
+                Antes de chegar às nossas casas, a água captada de rios,
+                represas ou outras fontes pode passar por diversas etapas
+                para remover impurezas e torná-la adequada ao abastecimento.
+            </p>
 
         </div>
 
-      </div>
 
-    </article>
+        <div class="etapas">
 
-  </div>
+            <div class="etapa">
+                <div class="numero">1</div>
 
+                <h3>Captação</h3>
 
-  <div class="data-note">
-
-    <strong>
-      ⚠️ Correção importante da pesquisa:
-    </strong>
-
-    a frase “2 bilhões de pessoas consomem água contaminada
-    diariamente” é simplificada demais.
-
-    A OMS informa que, em 2026, cerca de 2,1 bilhões ainda
-    não tinham acesso a água potável gerenciada com segurança;
-    em 2022, pelo menos 1,7 bilhão utilizava uma fonte de
-    água potável contaminada por fezes.
-
-  </div>
-
-</section>
+                <p>
+                    A água é retirada de uma fonte, como um rio,
+                    represa ou manancial.
+                </p>
+            </div>
 
 
-<!-- FONTES -->
+            <div class="etapa">
+                <div class="numero">2</div>
 
-<section id="fontes" class="section sources">
+                <h3>Coagulação</h3>
 
-  <div class="section-heading">
-
-    <span class="eyebrow">
-      REFERÊNCIAS
-    </span>
-
-    <h2>
-      De onde vêm os dados?
-    </h2>
-
-  </div>
+                <p>
+                    Produtos específicos ajudam a agrupar pequenas
+                    partículas presentes na água.
+                </p>
+            </div>
 
 
-  <div class="source-list">
+            <div class="etapa">
+                <div class="numero">3</div>
 
-    <a
-      href="https://www.who.int/news/item/18-06-2026-who-unveils-third-addendum-to-guidelines-for-drinking-water-quality"
-      target="_blank">
+                <h3>Floculação</h3>
 
-      OMS — Guidelines for drinking-water quality
-      ↗
-
-    </a>
-
-
-    <a
-      href="https://www.who.int/publications/i/item/9789240115149"
-      target="_blank">
-
-      OMS/UNICEF — Progress on household drinking-water,
-      sanitation and hygiene 2000–2024 ↗
-
-    </a>
+                <p>
+                    As partículas agrupadas formam flocos maiores,
+                    facilitando sua remoção.
+                </p>
+            </div>
 
 
-    <a
-      href="https://www.who.int/news-room/fact-sheets/detail/drinking-water"
-      target="_blank">
+            <div class="etapa">
+                <div class="numero">4</div>
 
-      OMS — Drinking-water: fatos e riscos à saúde ↗
+                <h3>Decantação</h3>
 
-    </a>
-
-  </div>
-
-
-  <p class="credits">
-
-    Projeto escolar • Tema:
-    <strong>Cada Gota Conta</strong>
-
-    • Tecnociência, Química, Biologia,
-    Sustentabilidade e Matemática.
-
-  </p>
-
-</section>
-
-</main>
+                <p>
+                    Os flocos mais pesados se depositam no fundo
+                    dos tanques.
+                </p>
+            </div>
 
 
-<footer>
+            <div class="etapa">
+                <div class="numero">5</div>
 
-  <span>
-    💧 Cada Gota Conta
-  </span>
+                <h3>Filtração</h3>
 
-  <span>
-    Projeto Integrador • 2026
-  </span>
-
-</footer>
-
-
-<!-- JANELA DAS DOENÇAS -->
-
-<div class="modal" id="modal">
-
-  <div class="modal-box">
-
-    <button class="close" id="closeModal">
-      ×
-    </button>
-
-    <span class="modal-icon">
-      💧
-    </span>
-
-    <h3 id="modalTitle">
-      Doença
-    </h3>
-
-    <p id="modalText"></p>
-
-  </div>
-
-</div>
+                <p>
+                    A água passa por filtros que retêm partículas
+                    que ainda permaneceram.
+                </p>
+            </div>
 
 
-<script src="script.js"></script>
+            <div class="etapa">
+                <div class="numero">6</div>
+
+                <h3>Desinfecção</h3>
+
+                <p>
+                    É realizada uma etapa de desinfecção para
+                    controlar microrganismos que podem causar doenças.
+                </p>
+            </div>
+
+
+            <div class="etapa">
+                <div class="numero">7</div>
+
+                <h3>Distribuição</h3>
+
+                <p>
+                    Depois do tratamento e do controle de qualidade,
+                    a água é encaminhada para o sistema de abastecimento.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PROBLEMAS E SOLUÇÕES -->
+    <section id="solucoes">
+
+        <div class="titulo">
+
+            <h2>⚠️ Problemas e 💡 soluções</h2>
+
+            <p>
+                A crise hídrica possui várias causas. Por isso,
+                também precisamos de várias soluções.
+            </p>
+
+        </div>
+
+
+        <div class="problema-solucao">
+
+            <div class="problema">
+
+                <h3>⚠️ Principais problemas</h3>
+
+                <ul>
+                    <li>Desperdício de água.</li>
+                    <li>Poluição de rios e lagos.</li>
+                    <li>Desmatamento de áreas próximas a nascentes.</li>
+                    <li>Falta de saneamento básico.</li>
+                    <li>Vazamentos nas redes de abastecimento.</li>
+                    <li>Uso excessivo de água na agricultura e indústria.</li>
+                    <li>Períodos de seca e eventos climáticos extremos.</li>
+                </ul>
+
+            </div>
+
+
+            <div class="solucao">
+
+                <h3>💡 O que podemos fazer?</h3>
+
+                <ul>
+                    <li>Reduzir o desperdício dentro de casa.</li>
+                    <li>Consertar vazamentos.</li>
+                    <li>Proteger rios, nascentes e matas.</li>
+                    <li>Investir em saneamento básico.</li>
+                    <li>Tratar corretamente o esgoto.</li>
+                    <li>Utilizar tecnologias que economizem água.</li>
+                    <li>Promover educação e consciência ambiental.</li>
+                </ul>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONSCIENTIZAÇÃO -->
+    <section class="conscientizacao">
+
+        <div class="titulo">
+
+            <h2>🌎 A mudança começa com a consciência</h2>
+
+        </div>
+
+        <p>
+            Preservar a água não é responsabilidade apenas de governos
+            ou empresas. Cada pessoa pode contribuir com pequenas atitudes.
+            Quando milhões de pessoas economizam, reutilizam e protegem
+            os recursos naturais, o impacto coletivo pode ser enorme.
+        </p>
+
+        <br><br>
+
+        <a href="#inicio" class="botao">
+            Voltar ao início
+        </a>
+
+    </section>
+
+
+    <!-- RODAPÉ -->
+    <footer>
+
+        <p>
+            💧 <span>Água para o Futuro</span> — Sustentabilidade,
+            consciência e ação.
+        </p>
+
+        <p>
+            Projeto educacional sobre preservação e tratamento da água.
+        </p>
+
+    </footer>
 
 </body>
 </html>
