@@ -5,215 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Projeto Integrador: Cada Gota Conta</title>
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+  <link href="https://blogdoenem.com.br/wp-content/uploads//sites/2/2014/01/tratamento-agua.png" rel="stylesheet">
   <!-- Chart.js para os gráficos -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
- 
-  <style>
-    :root {
-      --azul-escuro: #0f4c81;
-      --azul-vibrante: #0088ff;
-      --verde-agua: #00d2a0;
-      --verde-lima: #25d366;
-      --fundo: #eef9f6;
-      --texto: #1a303a;
-      --card-bg: #ffffff;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Poppins', sans-serif;
-    }
-
-    body {
-      background-color: var(--fundo);
-      color: var(--texto);
-      line-height: 1.6;
-    }
-
-    header {
-      background: linear-gradient(135deg, var(--azul-escuro), var(--verde-agua));
-      color: white;
-      text-align: center;
-      padding: 3rem 1rem;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-    }
-
-    header h1 {
-      font-size: 2.8rem;
-      font-weight: 700;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-    }
-
-    header p {
-      font-size: 1.2rem;
-      margin-top: 10px;
-      opacity: 0.9;
-    }
-
-    nav {
-      background: var(--azul-escuro);
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      padding: 10px;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      padding: 8px 16px;
-      border-radius: 20px;
-      transition: background 0.3s;
-      font-weight: 600;
-      font-size: 0.9rem;
-    }
-
-    nav a:hover {
-      background: var(--verde-agua);
-      color: var(--azul-escuro);
-    }
-
-    .container {
-      max-width: 1100px;
-      margin: 30px auto;
-      padding: 0 20px;
-    }
-
-    section {
-      background: var(--card-bg);
-      border-radius: 15px;
-      padding: 25px;
-      margin-bottom: 30px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-      border-top: 5px solid var(--verde-agua);
-    }
-
-    h2 {
-      color: var(--azul-escuro);
-      font-size: 1.8rem;
-      margin-bottom: 20px;
-      border-bottom: 2px solid var(--fundo);
-      padding-bottom: 10px;
-    }
-
-    .grid-cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-      margin-top: 20px;
-    }
-
-    .card {
-      background: #f8fdff;
-      border: 1px solid #d0f0eb;
-      border-radius: 12px;
-      padding: 15px;
-      text-align: center;
-      transition: transform 0.3s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-    }
-
-    .card img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      border-radius: 8px;
-    }
-
-    .legenda {
-      font-size: 0.85rem;
-      color: #555;
-      margin-top: 8px;
-      font-style: italic;
-    }
-
-    .tab-container {
-      margin-top: 15px;
-    }
-
-    .tab-buttons {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 15px;
-    }
-
-    .tab-btn {
-      background: var(--fundo);
-      border: 2px solid var(--azul-vibrante);
-      color: var(--azul-escuro);
-      padding: 10px 15px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: 600;
-      transition: all 0.3s;
-    }
-
-    .tab-btn.active, .tab-btn:hover {
-      background: var(--azul-vibrante);
-      color: white;
-    }
-
-    .tab-content {
-      display: none;
-      background: #f0fdfa;
-      padding: 15px;
-      border-radius: 8px;
-    }
-
-    .tab-content.active {
-      display: block;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 15px;
-    }
-
-    th, td {
-      padding: 12px;
-      text-align: left;
-      border-bottom: 1px solid #e0e0e0;
-    }
-
-    th {
-      background-color: var(--azul-escuro);
-      color: white;
-    }
-
-    tr:nth-child(even) {
-      background-color: #f4faf8;
-    }
-
-    .chart-box {
-      max-width: 600px;
-      margin: 20px auto;
-    }
-
-    footer {
-      background: var(--azul-escuro);
-      color: white;
-      text-align: center;
-      padding: 20px;
-      margin-top: 40px;
-    }
-
-    footer a {
-      color: var(--verde-agua);
-    }
-  </style>
-</head>
-<body>
-
+  <script src="https://blogdoenem.com.br/wp-content/uploads//sites/2/2014/01/tratamento-agua.png"></script>
   <header>
     <h1>PROJETO INTEGRADOR: CADA GOTA CONTA</h1>
     <p>Conscientização, Tratamento e Análise de Dados de Recursos Hídricos</p>
@@ -230,26 +25,43 @@
 
     <!-- SEÇÃO 1: TRATAMENTO DE ÁGUA E ESGOTO -->
     <section id="tratamento">
-      <h2>Tratamento de Água e Esgoto</h2>
-      <p>O saneamento básico é fundamental para garantir a integridade da saúde pública e a conservação do meio ambiente. O processo envolve etapas físicas, químicas e biológicas rigorosas.</p>
-     
+      <h2>Visita e Parte Técnica</h2>
+      <p>Durante uma visita à Sanepar com a escola, tivemos a oportunidade de conhecer melhor o processo de tratamento da água. A experiência contribuiu para o desenvolvimento do nosso trabalho, onde pudemos compreender as etapas de tratamento, a importância da eliminação de microrganismos e impurezas e a utilização de cálculos e índices para controlar a qualidade da água. </p>
       <div class="grid-cards">
         <div class="card">
-          <img src="https://saneacre.ac.gov.br/ete-entenda-como-funciona-uma-estacao-de-tratamento-de-esgoto/" alt="Estação de tratamento de água">
+          <img src="https://blogdoenem.com.br/wp-content/uploads//sites/2/2014/01/tratamento-agua.png" alt="Estação de tratamento de água">
           <p class="legenda">Estação de Tratamento de Água (ETA) utilizando tanques de decantação e filtragem antes da distribuição.</p>
         </div>
         <div class="card">
-          <img src="https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?auto=format&fit=crop&w=600&q=80" alt="Tratamento de esgoto">
+          <img src="https://saneacre.ac.gov.br/wp-content/uploads/2023/10/maxresdefault-1024x576.jpg" alt="Tratamento de esgoto">
           <p class="legenda">Tanque de aeração em uma Estação de Tratamento de Esgoto (ETE) para degradação de matéria orgânica por bactérias.</p>
         </div>
       </div>
     </section>
+   
+    <!-- SEÇÃO 2: TRATAMENTO DE ÁGUA -->
+     <section id="tratamento-de-agua"
+     <h2>Tratamento de Água</h2>
+     <div class="conteudo-texto"> 
+     <p><strong>Tratamento Físico:</strong></p>
+      <p>Utiliza processos como a filtração e a decantação para remover partículas sólidas. Por exemplo, temos o penereiramento (para partículas maiores) e a filtração (para impurezas menores)</p>
+      <p><strong>Tratamento Químico:</strong></p>
+      <p>Envolve a adição de produtos químicos que ajudam a eliminar contaminantes. Nesse caso, podemos citar a coagulação e a floculação, em que se adiciona coagulantes que aglomeram partículas. Além disso, há a desinfecção com cloro ou ozônio, que também é tratamento químico</p>
+      <p><strong>Tratamento Biológico</strong></p>
+      <p>Utiliza microorganismo para decompor matéria orgânica presente na água, comum em estações de tratamento de esgoto, sendo eficaz na remoção de poluentes orgânicos</p>
+    </div>
+    </section>
 
-    <!-- SEÇÃO 2: CONTAMINAÇÃO -->
+    <!-- SEÇÃO 3: CONTAMINAÇÃO -->
     <section id="contaminacao">
-      <h2>Contaminação das Águas</h2>
-      <p>A contaminação hídrica ocorre pelo descarte inadequado de efluentes industriais, lixo doméstico, agrotóxicos e esgoto não tratado nos corpos d'água.</p>
      
+      <h2>Tratamento de Esgoto (ETE)</h2>
+      <p><strong>Sistema primário</strong></p>
+      <p>Esse é um sistema muito simples que utiliza a sedimentação como uma forma de retirar</p>
+      <p>as impurezas presentes na água. O volume é mantido em repouso e essas impurezas, por</p>     
+      <p>serem  mais densas do que a água, se acumulam no fundo formando o lodo primário.</p>
+      <p> Em seguida, o líquido é escoado.</p>
+
       <div class="tab-container">
         <div class="tab-buttons">
           <button class="tab-btn active" onclick="openTab(event, 'domestico')">Esgoto Doméstico</button>
@@ -319,14 +131,12 @@
     <section id="dados">
       <h2>Análise de Dados de Saneamento</h2>
       <p>Abaixo apresentamos dados representativos baseados em indicadores globais e nacionais de acesso a saneamento e tratamento de efluentes.</p>
-      
- <div class="chart-box">
-      <img src="https://s2-g1.glbimg.com/HNv4rLQpeQoMA6t-mHhMS00sLE4=/0x0:1200x1368/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2020/n/l/2IekSMSoAl3zroKg0wsA/saneamento.png"
+     
+      <div class="chart-box">
+    <img src="https://s2-g1.glbimg.com/HNv4rLQpeQoMA6t-mHhMS00sLE4=/0x0:1200x1368/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2020/n/l/2IekSMSoAl3zroKg0wsA/saneamento.png"
          alt="Gráfico de dados de saneamento"
          class="grafico-imagem">
 </div>
-
-  </div>
 
   <footer>
     <p>Projeto Integrador: Cada Gota Conta &copy; 2026</p>
